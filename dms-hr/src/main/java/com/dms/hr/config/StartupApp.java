@@ -110,7 +110,7 @@ public class StartupApp implements CommandLineRunner {
 			status.setName("Active");
 
 			Status status2 = new Status();
-			status2.setName("INactive");
+			status2.setName("Inactive");
 			statusService.insertAll(Arrays.asList(status, status2));
 
 		}

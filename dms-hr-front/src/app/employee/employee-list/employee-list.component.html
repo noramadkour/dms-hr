@@ -1,1 +1,131 @@
-<p>employee-list works!</p>
+
+
+
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputCity">Employee Code</label>
+          <input type="text" class="form-control" id="inputCity" [(ngModel)]="employee.employeeCode" name="employeeCode">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputState">Employee Name</label>
+          <input type="text" class="form-control" id="inputCity" [(ngModel)]="employee.name" name="name">
+        
+        </div>
+        <div class="form-group col-md-3" >
+          <label for="inputZip">BrithDate</label>
+          <input type="date" class="form-control" id="inputZip"
+           stFilterOperator="gt" stFilterType="date" stFilter="birthDate" [(ngModel)]="employee.brithDate"  name="brithDate">
+       
+    
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputState">BrithCity</label>
+            <input type="text" class="form-control" id="inputCity" [(ngModel)]="employee.brithCity"  name="brithCity">
+          
+          </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="inputCity">Employee ID</label>
+          <input type="text" class="form-control" id="inputCity" [(ngModel)]="employee.id" name="id">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputState">Department</label>
+          <select id="inputState" class="form-control" [(ngModel)]="employee.departmentId" name="departmentId">
+            <option selected  value="">Choose...</option>
+            <option *ngFor="let dept of departments" [value]="dept.id"> {{dept.name}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="inputZip">jobTitle</label>
+          <select id="inputState" class="form-control" [(ngModel)]="employee.jobTitleId" name="jobId">
+            <option selected value="">Choose...</option>
+            <option *ngFor="let jobTitle of  jobs" [value]="jobTitle.id"> {{jobTitle.name}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputZip">DirectManager</label>
+            <input type="text" class="form-control" id="inputZip" [(ngModel)]="employee.managerId" name="managerId" >
+          </div>
+      </div>
+   
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="inputState">ContractType</label>
+            <select id="inputState" class="form-control" [(ngModel)]="employee.contractId" name="contractId">
+              <option selected  value="">Choose...</option>
+              <option *ngFor="let contract of contracts" [value]="contract.id"> {{contract.name}}</option>
+            </select>
+          </div>
+      <div class="form-group col-md-3">
+        <label for="inputState">Status</label>
+        <select id="inputState" class="form-control" [(ngModel)]="employee.statusId" name="statusId">
+          <option selected  value="">Choose...</option>
+          <option *ngFor="let status of status" [value]="status.id"> {{status.name}}</option>
+        </select>
+        
+      </div>
+
+      <div class="form-group col-md-5">
+     </div>
+
+      <div class="form-group col-md-1">
+        <button type="submit" (click)="employeeFilter()" class="btn btn-primary">View</button>
+      </div>
+      
+    </div>
+   
+  
+  </form>
+<!-- table -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th >Employee Code</th>
+            <th >Employee Name</th>
+            <th >BrithDate</th>
+            <th >BrithCity</th>
+            <th >Employee ID</th>
+            <th >Department</th>
+            <th >jobTitle</th>
+            <th >DirectManager</th>
+            <th >ContractType</th>
+            <th >Status</th>
+           
+         
+          
+         
+          
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{employee.employeeCode}} </td>
+            <td>{{employee.name}} </td>
+            <td>{{employee.brithDate}}</td>
+            <td>{{employee.brithCity}}</td>
+            <td>{{employee.id}} </td>
+            <td>{{employee.department?.name}}</td>
+            <td>{{employee.jobTitle?.name}}</td>
+            <td>{{employee.manager?.name}}</td>
+            <td>{{employee.contract?.name}}</td>
+           <td>{{employee.status?.name}}</td>
+
+         
+         
+         
+        
+            <td style="white-space: nowrap">
+             
+            </td>
+        </tr>
+        <tr *ngIf="!employees">
+            <td colspan="12" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

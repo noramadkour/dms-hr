@@ -38,6 +38,13 @@ public class EmployeeService {
 						departmentId.isEmpty() ? null : departmentId.get(), statusId.isEmpty() ? null : statusId.get(), brithDate.isEmpty() ? null : brithDate.get()
 								, jobTitleId.isEmpty() ? null : jobTitleId.get(), brithCity.isEmpty() ? null :brithCity.get(), managerId.isEmpty() ? null : managerId.get());
 	}
+	
+	public List<Employee> filter (String empCode,  Long empId,  Long contractId,  String empName,  Long departmentId,
+			 Long statusId, LocalDate brithDate,  Long jobTitleId,  String brithCity,  Long managerId){
+		
+		return employeeRepo.filter(empCode , empId, contractId, empName,departmentId, 
+				statusId, brithDate, jobTitleId, brithCity, managerId);
+	}
 
 	public Employee insert(Employee entity) {
 
